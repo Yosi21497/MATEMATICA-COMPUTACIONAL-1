@@ -36,7 +36,7 @@ sol=lib.GaussElimSimple(A,b)
 print("Gauss Eliminación Simple: \n",sol)
 print("La comprobación: \n",A@sol) #si la comprobación me da la matriz b igual a la que pusimos está bien. (recordemos que A*x=b )
 end_time = time.perf_counter() #para calcular el tiempo final
-elapsed_time= end_time - start_time #para calcular el tiempo total
+elapsed_time= end_time - start_time #para calcular el tiempo total #elapsed=transcurrido
 print("El tiempo en segundos en calcular es: \n",elapsed_time)
 
 residuo=A@sol-b
