@@ -1,4 +1,5 @@
 import numpy as np
+import numpy.polynomial as poly
 
 def intercambiaFilas(A,fil_i,fil_j):
     A[[fil_i,fil_j],:]=A[[fil_j,fil_i],:]
@@ -90,3 +91,14 @@ def SolveByLU(A,b):
     X=sustRegresiva(U,Y)
     
     return X
+
+def interpLagrange(cx,cy): #cx:coordenadas x = [x_1,...,x_n], cy:coordenadas y = [y_1,...,y_n]
+    n=len(cx)
+    p=poly.Polynomial([0]) # polinomio constante
+    for i in range(n):
+        mascara =np.ones(n,dtype=bool)
+        mascara[i]=False
+        raices=cx[mascara]
+        Laux=poly.Polynomial.fromroots(raices)
+        p=p+cy[i]*Laux/Laux(cx[i])
+    return p
